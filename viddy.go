@@ -400,9 +400,8 @@ func (v *Viddy) arrange() {
 		bottom.AddItem(tview.NewBox(), 0, 1, false)
 	}
 
-	bottom.AddItem(v.statusView, 25, 1, false)
-
-	flex.AddItem(bottom, 1, 1, false)
+	// bottom.AddItem(v.statusView, 25, 1, false)
+	// flex.AddItem(bottom, 1, 1, false)
 
 	if v.showLogView {
 		flex.AddItem(v.logView, 10, 1, false)
