@@ -160,19 +160,11 @@ func DiffPrettyText(diffs []diffmatchpatch.Diff) string {
 	var buff bytes.Buffer
 
 	for _, diff := range diffs {
-		text := diff.Text
-
 		switch diff.Type {
 		case diffmatchpatch.DiffInsert:
-			for _, c := range text {
-				if unicode.IsSpace(c) {
-					_, _ = buff.WriteRune(c)
-				} else {
-					_, _ = buff.WriteString(color.New(color.FgBlack).Sprintf(color.New(color.BgGreen).Sprintf(string(c))))
-				}
-			}
+			_, _ = buff.WriteString(color.New(color.BgGreen, color.FgBlack).Sprint(diff.Text))
 		case diffmatchpatch.DiffEqual:
-			_, _ = buff.WriteString(text)
+			_, _ = buff.WriteString(diff.Text)
 		}
 	}
 
